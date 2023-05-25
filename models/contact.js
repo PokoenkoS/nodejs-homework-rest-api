@@ -16,7 +16,7 @@ const contactSchema = new Schema ({
         type: Boolean,
         default: false,
       },
-});
+}, {versionKey: false, timestamps: true});
 const Contact = model("contact", contactSchema);
 
 contactSchema.post("save", handleMongoosError);
@@ -35,12 +35,12 @@ const updateFavoriteSchema = Joi.object({
     favorite:Joi.boolean().required(),
 })
 
-const schema = {
+const schemas = {
     addSchema,
     updateFavoriteSchema,
 }
 
 module.exports = {
     Contact,
-    schema
+    schemas
 }
